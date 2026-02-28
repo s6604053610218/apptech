@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำหุ้น TECH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Thai:wght@100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>กระดานแนะนำหุ้นเทคโนโลยีชั้นนำ</h1>
+        <p>คลิกเพื่อดูรายละเอียดเพิ่มเติม</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <img src="./img/amzn_0.png" alt="logo-Amazon">
+            <h2>หุ้น Amazon</h2>
+            <p>บริษัทเทคโนโลยีคลาวด์คอมพิวติ้ง</p>
+            <button id="butOpen">รายละเอียด</button>
+        </div>
+
+    </main>
+    <div class="overlay">
+        <img src="./img/amzn_0.png" alt="logo-Amazon">
+        <h2>หุ้น Amazon</h2>
+        <p>เปิดบริการ Webserver บริษัทเทคโนโลยีคลาวด์คอมพิวติ้ง</p>
+        <a href="https://www.tradingview.com/symbols/NASDAQ-AMZN/forecast/">ดูกราฟหุ้น Aamzon วันนี้</a>
+        <button id="butClose">ปิด</button>
+    </div>
+</div>
+
+    <footer>
+        <p>&copy; 2025 Sethakarn Prongnuch</p>
+    </footer>
+<script src="script.js"></script>
+
+</body>
+</html>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById("overlay");
+    const butOpen = document.getElementById("butOpen");
+    const butClose = document.getElementById("butClose");
+
+    // ตรวจสอบว่ามี element ครบไหม
+    if (!overlay || !butOpen || !butClose) {
+        console.error('Missing element(s):', { overlay, butOpen, butClose });
+        return;
+    }
+
+    // เปิด overlay
+    butOpen.addEventListener('click', () => {
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // ปิด overlay ด้วยปุ่ม
+    butClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+
+    // ปิด overlay เมื่อคลิกพื้นหลัง
+    overlay.addEventListener('click', (e) => {
+        // ตรวจสอบว่าคลิกนอกกล่อง overlay-box หรือไม่
+        const box = e.target.closest('.overlay-box');
+        if (!box) {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+});
+</script>
+</body>
+</html>
